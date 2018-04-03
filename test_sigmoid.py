@@ -20,8 +20,9 @@ print("y:\n{}".format(y.shape))
 
 class Mnist(rm.Model):
     def __init__(self):
-        self.layer1 = rm.Dense(output_size=5)
-        self.layer2 = rm.Dense(1)
+        self.layer1 = rm.Dense(output_size=100)
+        self.layer2 = rm.Dense(output_size=100)
+        self.layer3 = rm.Dense(1)
 
     def forward(self, x):
         print("")
@@ -34,7 +35,7 @@ class Mnist(rm.Model):
         print("")
         print("hidden:\n{}".format(t1))
         print("hidden shape:{}".format(t1.shape))
-        t2 = rm.relu(t1)
+        t2 = rm.sigmoid(t1)
         print("")
         print("relu:\n{}".format(t2))
         print("relu shape:{}".format(t2.shape))
@@ -46,7 +47,9 @@ class Mnist(rm.Model):
         print("output:\n{}".format(t3))
         print("output shape:{}".format(t3.shape))
         print("")
-        return t3
+        t4 = rm.sigmoid(t3)
+        t5 = self.layer3(t4)
+        return t5
 
 epoch = 50
 batch = 1
