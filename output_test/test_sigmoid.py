@@ -21,7 +21,7 @@ print("y:\n{}".format(y.shape))
 
 class Mnist(rm.Model):
     def __init__(self):
-        self.layer1 = rm.Dense(output_size=50)
+        self.layer1 = rm.Dense(output_size=5)
         self.layer2 = rm.Dense(1)
 
     def forward(self, x):
@@ -49,11 +49,11 @@ class Mnist(rm.Model):
         print("")
         return t3
 
-epoch = 200
+epoch = 1000
 batch = 1
 N = len(X)
 
-optimizer = Sgd(lr=0.005)
+optimizer = Sgd(lr=0.05, momentum=0.0)
 
 network = Mnist()
 
